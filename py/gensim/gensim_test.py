@@ -9,10 +9,12 @@ import re
 
 sys.path.append(os.path.dirname('PyKoSpacing/'))
 from pykospacing import Spacing
+from konlpy.tag import Okt
 
 
 def preprocessing(input_sentence):
     total_review = ''
+    okt = Okt()
 
     # 형태소 분석이 필요할까?
     for sentence in kkma.sentences(input_sentence):
@@ -24,8 +26,7 @@ def preprocessing(input_sentence):
         if len(sentence) < 198:
             spacing = Spacing()
             sentence = spacing(sentence)
-
-        total_review += (sentence + ". ")
+        total_review += (okt.normalize(sentence) + ". ")
     return total_review
 
 
