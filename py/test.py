@@ -37,15 +37,20 @@ def preprocessing(input_sentence):
 mytokenizer: OktTokenizer = OktTokenizer()
 lexrank: LexRank = LexRank(mytokenizer)
 
-summarize_text = str(input())
+while True:
+    print("입력해주세요: ")
+    summarize_text = str(input())
 
-# 2. summarize (like, pre-computation)
+    # 2. summarize (like, pre-computation)
 
-summarize_text = preprocessing(summarize_text)
-lexrank.summarize(summarize_text)  # 이 부분 디버깅 하면서 확인하기
+    summarize_text = preprocessing(summarize_text)
+    lexrank.summarize(summarize_text)  # 이 부분 디버깅 하면서 확인하기
 
-# 3. probe (like, query-time)
-summaries: List[str] = lexrank.probe(4)
+    # 3. probe (like, query-time)
+    summaries: List[str] = lexrank.probe(4)
 
-for summary in summaries:
-    print(">", summary)
+    for summary in summaries:
+        print(summary)
+
+
+    print("--------------------------------------------","\n")
