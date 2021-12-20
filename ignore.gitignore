@@ -134,3 +134,5 @@ dmypy.json
 #venv
 
 .venv/
+/.venv/
+/.idea/
